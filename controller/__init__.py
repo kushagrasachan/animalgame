@@ -34,8 +34,10 @@ class Controller:
             self._handle_player_input()
 
         self._model.tick_forward()
+        score = self._model.score
 
         self._view.print_field(self._model)
+        self._view.print_statistics(score)
 
     def _handle_player_input(self):
         player_action = self._view.get_player_input()

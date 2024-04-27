@@ -13,6 +13,7 @@ class Model:
         self._all_animals = []
         self._all_fires = []
         self.player = Player()
+        self.score = 0
 
     def tick_forward(self) -> None:
         self.add_animal()
@@ -30,6 +31,7 @@ class Model:
     def add_fire(self) -> None:
         x, y = self.player.x, self.player.y
         self._all_fires.append(Fire(x,y))
+        self._all_fires.append(Fire(x,y-1)) #hacky way to deal with collision printing
 
     def move_all_fires(self) -> None:
         for idx, fire in enumerate(self._all_fires):
@@ -45,6 +47,7 @@ class Model:
                 if (fire.x == animal.x and fire.y == animal.y):
                     self._all_fires.pop(f_idx)
                     self._all_animals.pop(a_idx)
+                    self.score += 1
 
     def is_player_alive(self) -> None:
         """

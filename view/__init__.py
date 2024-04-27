@@ -15,6 +15,9 @@ class View:
     def __init__(self) -> None:
         self.window_space = curses.initscr()
         self._game_window = curses.newwin(config.TERM_HEIGHT, config.TERM_WIDTH,0,0)
+        self._statistics_window = curses.newwin(config.STAT_WIN_HEIGHT, \
+                                                config.STAT_WIN_WIDTH, \
+                                                0, config.TERM_WIDTH+4)
 
     def __del__(self) -> None:
         utils.revert_curses()
@@ -24,6 +27,7 @@ class View:
         self._game_window.nodelay(1)
         self._game_window.border(0)
         self._game_window.keypad(True)
+        self._statistics_window.border(0)
 
     def get_player_input(self) -> PlayerActions:
         player_input = self._game_window.getch()
@@ -77,6 +81,9 @@ class View:
 
         self._game_window.refresh()         # crucial to actually displaying the modifications made to the screen
 
+    def print_statistics(self, score:int):
+        self._statistics_window.addstr(4, 2, f"SCORE: {score}")
+        self._statistics_window.refresh()
 
 
 
