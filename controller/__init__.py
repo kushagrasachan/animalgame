@@ -35,14 +35,14 @@ class Controller:
 
         self._model.tick_forward()
 
-        self._view.print_field()
+        self._view.print_field(self._model)
 
     def _handle_player_input(self):
         player_action = self._view.get_player_input()
-        logger.info(f"handling inputs, got {player_action}")
+        # logger.info(f"handling inputs, got {player_action}")
 
         while player_action == PlayerActions.MISCLICKED:
-            logger.info("misclicked")
+            # logger.info("misclicked")
             player_action = self._view.get_player_input()
 
         if player_action == PlayerActions.MOVE_PLAYER_RIGHT:
@@ -50,7 +50,7 @@ class Controller:
         elif player_action == PlayerActions.MOVE_PLAYER_LEFT:
             self._model.player.move(Directions.LEFT)
         elif player_action == PlayerActions.SHOOT:
-            self._model.player.shoot()
+            self._model.player.shoot(self._model)
         elif player_action == PlayerActions.PAUSE_GAME:
             # busy waiting as Pause
             player_action = self._view.get_player_input()

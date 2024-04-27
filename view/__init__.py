@@ -1,6 +1,7 @@
 import curses
 import _curses
 import utils
+from common import config
 from view.player_actions import PlayerActions
 
 import numpy as np
@@ -10,11 +11,10 @@ import logging
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='example.log', filemode='w', level=logging.DEBUG)
 
-
-
 class View:
     def __init__(self) -> None:
-        self._game_window = curses.initscr()
+        self.window_space = curses.initscr()
+        self._game_window = curses.newwin(config.TERM_HEIGHT, config.TERM_WIDTH,0,0)
 
     def __del__(self) -> None:
         utils.revert_curses()
@@ -42,8 +42,18 @@ class View:
         else:
             return PlayerActions.MISCLICKED
         
-    def print_field(self) -> None:
-        self.demo()
+    def print_field(self, model) -> None:
+        # self.demo()
+        b = "██".encode(locale.getpreferredencoding())
+
+        # logger.info(f"{model}")
+        logger.info(f"{len(model._all_animals)} animals populated")
+        for animal in model._all_animals:
+            try:
+                self._game_window.addstr(animal.y, animal.x*2, b)
+            except:
+                logger.info(f"{_curses.error}")
+                pass
         self._game_window.refresh()         # crucial to actually displaying the modifications made to the screen
 
 

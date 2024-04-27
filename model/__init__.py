@@ -1,5 +1,8 @@
+import random
 from entity.player import Player
 from entity.fire import Fire
+from entity.animal import Animal
+from common import config
 
 import logging
 logger = logging.getLogger(__name__)
@@ -15,5 +18,13 @@ class Model:
 
         return True
     
+    def add_animal(self, thresh=0.8):
+        r = random.random()
+        if r >= thresh:
+            x = random.randint(1, config.TERM_WIDTH-1)
+            y = random.randint(1, config.TERM_HEIGHT-5)
+            self._all_animals.append(Animal(x,y))
+
     def tick_forward(self):
+        self.add_animal()
         pass
