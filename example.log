@@ -1,0 +1,20 @@
+INFO:utils:set up curses, suppressed cursor
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:view:<class '_curses.error'>
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:view:<class '_curses.error'>
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:view:<class '_curses.error'>
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:view:<class '_curses.error'>
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:view:<class '_curses.error'>
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:controller:handling inputs, got PlayerActions.NOTHING
+INFO:view:<class '_curses.error'>
+INFO:controller:handling inputs, got PlayerActions.QUIT_GAME
+INFO:view:<class '_curses.error'>
