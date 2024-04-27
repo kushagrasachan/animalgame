@@ -2,7 +2,7 @@ from entity import Entity
 from common.directions import Directions
 
 class Animal(Entity):
-    def __init__(self,x,y) -> None:
+    def __init__(self, x:int, y:int) -> None:
         super().__init__()
         self.x = x
         self.y = y

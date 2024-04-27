@@ -48,6 +48,7 @@ class View:
         animal_glyph = "█".encode(locale.getpreferredencoding())
         player_glyph = "†Δ§Δ†".encode(locale.getpreferredencoding())
         # player_glyph = " +\n+++\n +".encode(locale.getpreferredencoding())
+        fire_glyph = "•".encode(locale.getpreferredencoding())
 
         try:
             self._game_window.addstr(model.player.y, model.player.x+1, "     ")
@@ -66,6 +67,13 @@ class View:
             except:
                 pass
 
+        for fire in model._all_fires:
+            try:
+                self._game_window.addstr(fire.y, fire.x, fire_glyph)
+                self._game_window.addstr(fire.y+1, fire.x, " ")
+            except:
+                logger.info(f"fire posn: {fire.x, fire.y}")
+                pass
 
         self._game_window.refresh()         # crucial to actually displaying the modifications made to the screen
 

@@ -25,8 +25,7 @@ class Player(Entity):
             self.x -= 1
         if direction == Directions.RIGHT:
             self.x += 1
-        
 
     def shoot(self, model) -> None:
-        # model.add_fire()
+        model.add_fire()
         pass

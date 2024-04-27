@@ -2,8 +2,10 @@ from entity import Entity
 from common.directions import Directions
 
 class Fire(Entity):
-    def __init__(self) -> None:
+    def __init__(self, x:int, y:int) -> None:
         super().__init__()
+        self.x = x
+        self.y = y
 
     def move(self, direction:Directions) -> None:
         self.x += direction[0]
