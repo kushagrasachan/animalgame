@@ -13,7 +13,7 @@ logging.basicConfig(filename='example.log', filemode='w', level=logging.DEBUG)
 
 class View:
     def __init__(self) -> None:
-        self.window_space = curses.initscr()
+        self._window_space = curses.initscr()
         self._game_window = curses.newwin(config.TERM_HEIGHT, config.TERM_WIDTH,0,0)
         self._statistics_window = curses.newwin(config.STAT_WIN_HEIGHT, \
                                                 config.STAT_WIN_WIDTH, \

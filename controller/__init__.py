@@ -17,13 +17,13 @@ class Controller:
         self._view.setup()
         self.continue_execution = True
 
-    def play(self):    
+    def play(self) -> None:    
         while self.continue_execution:
-            self.tick_forward()
+            self._tick_forward()
             time.sleep(0.1)
             # self._view._game_window.timeout(300)
 
-    def tick_forward(self):
+    def _tick_forward(self) -> None:
         # player_action = self._view.get_player_input()
         # logger.info(f"tick_forward called, player input received was {player_action}")
 
@@ -39,7 +39,7 @@ class Controller:
         self._view.print_field(self._model)
         self._view.print_statistics(score)
 
-    def _handle_player_input(self):
+    def _handle_player_input(self) -> None:
         player_action = self._view.get_player_input()
         # logger.info(f"handling inputs, got {player_action}")
 
