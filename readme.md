@@ -8,3 +8,6 @@
 - Shoot: Space bar
 - Pause Game: P or p key
 - Quit Game (no confirmation): Esc key 
+
+### Opening the `.drawio` class-diagram file
+- Download the file (located in folder `info`), and open it by uploading to [Drawio Web App](https://app.diagrams.net/)
