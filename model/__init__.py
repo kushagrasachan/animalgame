@@ -15,10 +15,12 @@ class Model:
         self.player = Player()
 
     def is_player_alive(self):
-
+        """
+        Yet to design additional game mechanics to pose a threat to the player
+        """
         return True
     
-    def add_animal(self, thresh=0.8):
+    def add_animal(self, thresh=0.875):
         r = random.random()
         if r >= thresh:
             x = random.randint(1, config.TERM_WIDTH-1)

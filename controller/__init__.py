@@ -20,7 +20,7 @@ class Controller:
     def play(self):    
         while self.continue_execution:
             self.tick_forward()
-            time.sleep(0.4)
+            time.sleep(0.1)
             # self._view._game_window.timeout(300)
 
     def tick_forward(self):

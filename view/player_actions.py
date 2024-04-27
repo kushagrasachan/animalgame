@@ -1,4 +1,5 @@
 from enum import Enum, auto
+import curses
 
 class PlayerActions(Enum):
     MOVE_PLAYER_RIGHT = auto()

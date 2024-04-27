@@ -23,13 +23,14 @@ class View:
         utils.setup_curses()
         self._game_window.nodelay(1)
         self._game_window.border(0)
+        self._game_window.keypad(True)
 
     def get_player_input(self) -> PlayerActions:
         player_input = self._game_window.getch()
 
         if player_input == curses.ERR:
             return PlayerActions.NOTHING
-        elif player_input == curses.KEY_LEFT:
+        elif player_input == curses.KEY_LEFT or player_input == 119:
             return PlayerActions.MOVE_PLAYER_LEFT
         elif player_input == curses.KEY_RIGHT:
             return PlayerActions.MOVE_PLAYER_RIGHT
@@ -43,17 +44,29 @@ class View:
             return PlayerActions.MISCLICKED
         
     def print_field(self, model) -> None:
-        # self.demo()
-        b = "██".encode(locale.getpreferredencoding())
+        # self.first_attempt()
+        animal_glyph = "█".encode(locale.getpreferredencoding())
+        player_glyph = "†Δ§Δ†".encode(locale.getpreferredencoding())
+        # player_glyph = " +\n+++\n +".encode(locale.getpreferredencoding())
+
+        try:
+            self._game_window.addstr(model.player.y, model.player.x+1, "     ")
+            self._game_window.addstr(model.player.y, model.player.x-1, "     ")
+            self._game_window.addstr(model.player.y, model.player.x, player_glyph)
+        except:
+            logger.info(f"{model.player.x, model.player.y}")
+            # logger.info(f"{_curses.error}")
+            pass
 
         # logger.info(f"{model}")
-        logger.info(f"{len(model._all_animals)} animals populated")
+        # logger.info(f"{len(model._all_animals)} animals populated")
         for animal in model._all_animals:
             try:
-                self._game_window.addstr(animal.y, animal.x*2, b)
+                self._game_window.addstr(animal.y, animal.x, animal_glyph)
             except:
-                logger.info(f"{_curses.error}")
                 pass
+
+
         self._game_window.refresh()         # crucial to actually displaying the modifications made to the screen
 
 
@@ -62,7 +75,7 @@ class View:
 
 
 ########
-    def demo(self):
+    def first_attempt(self):
             animal = np.array(
             [[(10,1,1), (10,2,1), (10,3,1)], \
             [(11,1,1),(11,2,0),(11,3,1)], \
