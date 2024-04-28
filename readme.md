@@ -11,3 +11,5 @@
 
 ### Opening the `.drawio` class-diagram file
 - Download the file (located in folder `info`), and open it by uploading to [Drawio Web App](https://app.diagrams.net/)
+
+![](https://github.com/kushagrasachan/animalgame/blob/master/info/Gameplay.gif)
